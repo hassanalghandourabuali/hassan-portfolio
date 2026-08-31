@@ -251,14 +251,14 @@ export const projects = [
     featured: true,
     priority: 1,
     images: [
-      "/projects/munjiz-splash.png",
-      "/projects/munjiz-home.png",
-      "/projects/munjiz-new-project.png",
-      "/projects/munjiz-report.png",
-      "/projects/munjiz-progress.png",
-      "/projects/munjiz-members.png",
-      "/projects/munjiz-tasks.png",
-      "/projects/munjiz-theme.png",
+      "projects/munjiz-splash.png",
+      "projects/munjiz-home.png",
+      "projects/munjiz-new-project.png",
+      "projects/munjiz-report.png",
+      "projects/munjiz-progress.png",
+      "projects/munjiz-members.png",
+      "projects/munjiz-tasks.png",
+      "projects/munjiz-theme.png",
     ],
   },
   {
@@ -304,14 +304,14 @@ export const projects = [
     featured: true,
     priority: 2,
     images: [
-      "/projects/driving-school-dashboard.png",
-      "/projects/driving-school-license-test.png",
-      "/projects/driving-school-practical-group.png",
-      "/projects/driving-school-theoretical-lessons.png",
-      "/projects/driving-school-add-lesson.png",
-      "/projects/driving-school-assign-students.png",
-      "/projects/driving-school-lesson.png",
-      "/projects/driving-school-schedule.png",
+      "projects/driving-school-dashboard.png",
+      "projects/driving-school-license-test.png",
+      "projects/driving-school-practical-group.png",
+      "projects/driving-school-theoretical-lessons.png",
+      "projects/driving-school-add-lesson.png",
+      "projects/driving-school-assign-students.png",
+      "projects/driving-school-lesson.png",
+      "projects/driving-school-schedule.png",
     ],
   },
 ];
@@ -392,7 +392,7 @@ export const certifications = [
     date: "10/2025",
     category: "technical",
     featured: true,
-    url: "/certificates/mobile-development.pdf",
+    url: "certificates/mobile-development.pdf",
   },
   {
     id: "c9",
@@ -405,7 +405,7 @@ export const certifications = [
     date: "10/2025",
     category: "technical",
     featured: true,
-    url: "/certificates/css-html.pdf",
+    url: "certificates/css-html.pdf",
   },
   {
     id: "c10",
@@ -418,7 +418,7 @@ export const certifications = [
     date: "10/2025",
     category: "technical",
     featured: true,
-    url: "/certificates/adobe-xd.pdf",
+    url: "certificates/adobe-xd.pdf",
   },
   {
     id: "c1",
@@ -431,7 +431,7 @@ export const certifications = [
     date: "06/2026",
     category: "marketing",
     featured: true,
-    url: "/certificates/digital-marketing-intro.pdf",
+    url: "certificates/digital-marketing-intro.pdf",
   },
   {
     id: "c2",
@@ -444,7 +444,7 @@ export const certifications = [
     date: "10/2025",
     category: "marketing",
     featured: true,
-    url: "/certificates/marketing-sales-foundations.pdf",
+    url: "certificates/marketing-sales-foundations.pdf",
   },
   {
     id: "c4",
@@ -457,7 +457,7 @@ export const certifications = [
     date: "10/2025",
     category: "technical",
     featured: false,
-    url: "/certificates/icdl-teacher.pdf",
+    url: "certificates/icdl-teacher.pdf",
   },
   {
     id: "c6",
@@ -470,7 +470,7 @@ export const certifications = [
     date: "10/2025",
     category: "digital",
     featured: true,
-    url: "/certificates/freelancing-basics.pdf",
+    url: "certificates/freelancing-basics.pdf",
   },
   {
     id: "c3",
@@ -483,7 +483,7 @@ export const certifications = [
     date: "10/2025",
     category: "soft-skills",
     featured: true,
-    url: "/certificates/effective-communication.pdf",
+    url: "certificates/effective-communication.pdf",
   },
   {
     id: "c5",
@@ -497,7 +497,7 @@ export const certifications = [
     category: "language",
     featured: true,
     // تأكد من الاسم الفعلي لملف الـ PDF داخل مجلد certificates وحدّث المسار إذا كان مختلفاً
-    url: "/certificates/english-intermediate.pdf",
+    url: "certificates/english-intermediate.pdf",
   },
   {
     id: "c7",
@@ -510,7 +510,7 @@ export const certifications = [
     date: "08/2020",
     category: "technical",
     featured: false,
-    url: "/certificates/typing-skills.pdf",
+    url: "certificates/typing-skills.pdf",
   },
 ];
 
