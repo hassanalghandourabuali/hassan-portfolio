@@ -63,7 +63,7 @@ export default function Navbar() {
                     : 'text-foreground-muted hover:text-foreground hover:bg-[rgb(var(--surface-elevated))]'
                 }`}
               >
-                {t({ en: item.labelEn, ar: item.labelAr, ru: item.labelRu })}
+                {t(item)}
               </button>
             </li>
           ))}
@@ -88,15 +88,11 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* ThemePicker: desktop-only in the top bar now, moved into the mobile menu below */}
-          <div className="hidden lg:block">
-            <ThemePicker />
-          </div>
+          <ThemePicker />
 
-          {/* Theme toggle: desktop-only in the top bar now, moved into the mobile menu below */}
           <button
             onClick={toggleTheme}
-            className="hidden lg:flex w-9 h-9 items-center justify-center rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--surface-elevated))] text-foreground-muted hover:text-foreground hover:border-accent transition-all focus-ring"
+            className="w-9 h-9 flex items-center justify-center rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--surface-elevated))] text-foreground-muted hover:text-foreground hover:border-accent transition-all focus-ring"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
@@ -130,28 +126,11 @@ export default function Navbar() {
                       : 'text-foreground-muted hover:text-foreground hover:bg-[rgb(var(--surface-elevated))]'
                   }`}
                 >
-                  {t({ en: item.labelEn, ar: item.labelAr, ru: item.labelRu })}
+                  {t(item)}
                 </button>
               </li>
             ))}
           </ul>
-
-          {/* Theme toggle + ThemePicker live here on mobile, so nothing gets pushed off-screen */}
-          <div className="mt-4 pt-4 border-t border-[rgb(var(--border))] flex items-center justify-between gap-3">
-            <span className="text-sm font-medium text-foreground-muted">
-              {theme === 'dark' ? 'Dark mode' : 'Light mode'}
-            </span>
-            <div className="flex items-center gap-2">
-              <ThemePicker />
-              <button
-                onClick={toggleTheme}
-                className="w-9 h-9 flex items-center justify-center rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--surface-elevated))] text-foreground-muted hover:text-foreground hover:border-accent transition-all focus-ring"
-                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                {theme === 'dark' ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
-              </button>
-            </div>
-          </div>
         </div>
       )}
     </header>

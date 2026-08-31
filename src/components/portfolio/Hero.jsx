@@ -46,7 +46,7 @@ export default function Hero() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-end">
           <div className="lg:col-span-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgb(var(--accent)/0.3)] bg-[rgb(var(--accent)/0.05)] mt-4 mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgb(var(--accent)/0.3)] bg-[rgb(var(--accent)/0.05)] mt-16 sm:mt-4 mb-8">
               <span className="w-2 h-2 rounded-full bg-success animate-pulse" aria-hidden="true" />
               <span className="text-xs font-medium text-accent">
                 {lang === 'ar' ? 'متاح للفرص' : lang === 'ru' ? 'Открыт для возможностей' : 'Open to Opportunities'}

@@ -29,7 +29,7 @@ export default function ThemePicker() {
       </button>
 
       {open && (
-        <div className="absolute end-0 mt-2 w-56 p-2 rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] shadow-lg z-50">
+        <div className="absolute end-0 bottom-full mb-2 w-56 max-h-64 overflow-y-auto p-2 rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] shadow-lg z-50">
           <div className="grid grid-cols-1 gap-1">
             {colorThemes.map((ct) => (
               <button
