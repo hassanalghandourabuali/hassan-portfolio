@@ -75,7 +75,7 @@ export default function Navbar() {
               <button
                 key={l.code}
                 onClick={() => setLang(l.code)}
-                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all focus-ring ${
+                className={`px-2 py-1 rounded-md text-xs font-medium transition-all focus-ring ${
                   lang === l.code
                     ? 'bg-accent text-[rgb(var(--accent-foreground))] shadow-sm'
                     : 'text-foreground-muted hover:text-foreground'
@@ -83,17 +83,16 @@ export default function Navbar() {
                 aria-label={`Switch to ${l.label}`}
                 aria-pressed={lang === l.code}
               >
-                {l.label}
+                <span className="sm:hidden">{l.code.toUpperCase()}</span>
+                <span className="hidden sm:inline">{l.label}</span>
               </button>
             ))}
           </div>
 
-          {/* ThemePicker: desktop-only in the top bar now, moved into the mobile menu below */}
           <div className="hidden lg:block">
             <ThemePicker />
           </div>
 
-          {/* Theme toggle: desktop-only in the top bar now, moved into the mobile menu below */}
           <button
             onClick={toggleTheme}
             className="hidden lg:flex w-9 h-9 items-center justify-center rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--surface-elevated))] text-foreground-muted hover:text-foreground hover:border-accent transition-all focus-ring"
@@ -136,7 +135,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Theme toggle + ThemePicker live here on mobile, so nothing gets pushed off-screen */}
           <div className="mt-4 pt-4 border-t border-[rgb(var(--border))] flex items-center justify-between gap-3">
             <span className="text-sm font-medium text-foreground-muted">
               {theme === 'dark' ? 'Dark mode' : 'Light mode'}
