@@ -28,13 +28,15 @@ export default function Experience() {
         <div ref={ref} className="reveal space-y-6">
           {experiences.map((exp) => {
             const resp = lang === 'ar' ? exp.responsibilitiesAr : lang === 'ru' ? exp.responsibilitiesRu : exp.responsibilitiesEn;
+            const tags = lang === 'ar' ? exp.skillTagsAr : lang === 'ru' ? exp.skillTagsRu : exp.skillTagsEn;
+            const period = lang === 'ar' ? exp.periodAr : lang === 'ru' ? exp.periodRu : exp.periodEn;
             return (
               <div key={exp.id} className="p-5 rounded-2xl bg-surface-elevated border border-[rgb(var(--border))]">
                 <div className="flex justify-between items-start mb-1 flex-wrap gap-2">
                   <h3 className="text-base font-semibold text-foreground">
                     {lang === 'ar' ? exp.roleAr : lang === 'ru' ? exp.roleRu : exp.roleEn}
                   </h3>
-                  <span className="text-xs text-foreground-muted">{exp.period}</span>
+                  <span className="text-xs text-foreground-muted">{period}</span>
                 </div>
                 <div className="text-sm text-[rgb(var(--accent))] font-medium mb-3">
                   {lang === 'ar' ? exp.orgAr : lang === 'ru' ? exp.orgRu : exp.orgEn}
@@ -49,9 +51,9 @@ export default function Experience() {
                     </li>
                   ))}
                 </ul>
-                {exp.skillTags && (
+                {tags && (
                   <div className="flex flex-wrap gap-2">
-                    {exp.skillTags.map((tag, ti) => (
+                    {tags.map((tag, ti) => (
                       <span
                         key={ti}
                         className="text-xs px-2 py-1 rounded-full bg-[rgb(var(--accent)/0.1)] text-[rgb(var(--accent))]"

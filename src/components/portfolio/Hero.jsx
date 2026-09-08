@@ -67,9 +67,16 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-3 mb-10">
               {[
-                { label: lang === 'ar' ? 'أبني' : lang === 'ru' ? 'Строю' : 'Build', sub: 'Flutter & Mobile', icon: '⚡' },
-                { label: lang === 'ar' ? 'أفكّر' : lang === 'ru' ? 'Думаю' : 'Think', sub: 'Product & Business', icon: '🧠' },
-                { label: lang === 'ar' ? 'أحل' : lang === 'ru' ? 'Решаю' : 'Solve', sub: 'Customer & Digital', icon: '🎯' },
+                {
+                  label: lang === 'ar' ? 'أبني' : lang === 'ru' ? 'Строю' : 'Build',
+                  sub: lang === 'ar' ? 'Flutter وتطوير الموبايل' : lang === 'ru' ? 'Flutter и мобильная разработка' : 'Flutter & Mobile',
+                  icon: '⚡',
+                },
+                {
+                  label: lang === 'ar' ? 'أسوّق' : lang === 'ru' ? 'Продвигаю' : 'Market',
+                  sub: lang === 'ar' ? 'السوشيال ميديا' : lang === 'ru' ? 'Социальные сети' : 'Social Media',
+                  icon: '📱',
+                },
               ].map((p) => (
                 <div
                   key={p.label}
@@ -159,7 +166,7 @@ export default function Hero() {
 
         <button
           onClick={() => scrollTo('about')}
-          className="absolute bottom-8 start-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-foreground-muted hover:text-accent transition-colors focus-ring rounded"
+          className="mt-10 sm:mt-0 sm:absolute sm:bottom-8 sm:start-1/2 sm:-translate-x-1/2 flex flex-col items-center gap-1 text-foreground-muted hover:text-accent transition-colors focus-ring rounded"
           aria-label="Scroll down"
         >
           <span className="text-xs">{lang === 'ar' ? 'مرّر للاستكشاف' : lang === 'ru' ? 'Прокрутите' : 'Scroll to explore'}</span>

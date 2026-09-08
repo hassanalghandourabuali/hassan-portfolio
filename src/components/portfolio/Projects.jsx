@@ -121,7 +121,11 @@ export default function Projects() {
         >
           {projects.map((proj) => {
             const techs =
-              proj.technologies || proj.technologiesEn || [];
+              (lang === 'ar'
+                ? proj.technologiesAr
+                : lang === 'ru'
+                ? proj.technologiesRu
+                : proj.technologiesEn) || [];
 
             const projName =
               lang === 'ar'

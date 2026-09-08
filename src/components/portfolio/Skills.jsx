@@ -10,29 +10,21 @@ import {
 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
-// Each group gets its own accent color (as an "R G B" triplet so it plugs into
-// the same rgb(var(--x)/opacity) pattern already used for --accent/--border).
-// This is what actually separates the four categories at a glance instead of
-// everything sharing one blue.
 const GROUP_META = {
-  primary: { icon: Code2, color: '59 130 246' },   // blue — matches existing --accent
-  business: { icon: Briefcase, color: '13 148 136' }, // teal
-  tools: { icon: Wrench, color: '124 58 237' },     // violet
-  soft: { icon: Users, color: '180 83 9' },         // amber (darkened for contrast)
+  primary: { icon: Code2, color: '59 130 246' },
+  business: { icon: Briefcase, color: '13 148 136' },
+  tools: { icon: Wrench, color: '124 58 237' },
+  soft: { icon: Users, color: '180 83 9' },
 };
 
-// Best-effort icon per individual skill, matched by keyword in the English name.
 const SKILL_ICON_RULES = [
   [/flutter/i, Smartphone],
   [/dart/i, Code2],
   [/mobile app/i, Smartphone],
   [/ui\/ux/i, Palette],
-  [/crm|relationship/i, Users2],
-  [/experience \(cx\)/i, HeartHandshake],
-  [/digital marketing/i, Megaphone],
   [/social media/i, Share2],
-  [/e-commerce|e-business/i, ShoppingCart],
-  [/sales/i, TrendingUp],
+  [/e-business|e-commerce/i, ShoppingCart],
+  [/marketing/i, Megaphone],
   [/excel|office/i, FileSpreadsheet],
   [/google workspace/i, Mail],
   [/canva/i, ImageIcon],
@@ -75,7 +67,6 @@ export default function Skills() {
             const GroupIcon = meta.icon;
             const cat = meta.color;
             const label = lang === 'ar' ? group.labelAr : lang === 'ru' ? group.labelRu : group.labelEn;
-            const isPrimary = group.level === 'primary';
 
             return (
               <div key={group.id} style={{ '--cat': cat }}>
@@ -87,60 +78,29 @@ export default function Skills() {
                   <div className="flex-1 h-px bg-[rgb(var(--border))]" aria-hidden="true" />
                 </div>
 
-                {isPrimary ? (
-                  // Featured treatment: larger cards, icon badge, top accent bar
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {group.skills.map((skill, i) => {
-                      const SkillIcon = iconFor(skill.nameEn);
-                      const name = lang === 'ar' ? skill.nameAr : lang === 'ru' ? skill.nameRu : skill.nameEn;
-                      return (
-                        <div
-                          key={i}
-                          className="relative overflow-hidden p-5 rounded-2xl bg-surface-elevated border border-[rgb(var(--border))] hover:border-[rgb(var(--cat)/0.6)] hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
-                        >
-                          <div className="absolute top-0 start-0 w-full h-1 bg-gradient-to-r from-[rgb(var(--cat))] to-[rgb(var(--cat)/0.2)]" aria-hidden="true" />
-                          <div className="flex items-start gap-3">
-                            <div className="w-11 h-11 rounded-xl bg-[rgb(var(--cat)/0.12)] flex items-center justify-center flex-shrink-0">
-                              <SkillIcon size={20} className="text-[rgb(var(--cat))]" aria-hidden="true" />
-                            </div>
-                            <div className="min-w-0">
-                              <div className="text-base font-semibold text-foreground mb-1">{name}</div>
-                              {skill.evidence && (
-                                <div className="text-xs text-foreground-muted leading-relaxed">{skill.evidence}</div>
-                              )}
-                            </div>
-                          </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {group.skills.map((skill, i) => {
+                    const SkillIcon = iconFor(skill.nameEn);
+                    const name = lang === 'ar' ? skill.nameAr : lang === 'ru' ? skill.nameRu : skill.nameEn;
+                    const evidence = lang === 'ar' ? skill.evidenceAr : lang === 'ru' ? skill.evidenceRu : skill.evidenceEn;
+                    return (
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 p-2.5 rounded-xl bg-surface-elevated border border-[rgb(var(--border))] hover:border-[rgb(var(--cat)/0.5)] transition-colors"
+                      >
+                        <div className="w-7 h-7 rounded-lg bg-[rgb(var(--cat)/0.12)] flex items-center justify-center flex-shrink-0">
+                          <SkillIcon size={14} className="text-[rgb(var(--cat))]" aria-hidden="true" />
                         </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  // Compact treatment: pill chips, evidence revealed on hover
-                  <div className="flex flex-wrap gap-2.5">
-                    {group.skills.map((skill, i) => {
-                      const SkillIcon = iconFor(skill.nameEn);
-                      const name = lang === 'ar' ? skill.nameAr : lang === 'ru' ? skill.nameRu : skill.nameEn;
-                      return (
-                        <div
-                          key={i}
-                          className="group relative flex items-center gap-2 px-4 py-2.5 rounded-full bg-surface-elevated border border-[rgb(var(--border))] hover:border-[rgb(var(--cat)/0.5)] hover:bg-[rgb(var(--cat)/0.08)] hover:-translate-y-0.5 transition-all cursor-default"
-                        >
-                          <SkillIcon size={14} className="text-foreground-muted group-hover:text-[rgb(var(--cat))] transition-colors" aria-hidden="true" />
-                          <span className="text-sm font-medium text-foreground">{name}</span>
-
-                          {skill.evidence && (
-                            <div
-                              role="tooltip"
-                              className="pointer-events-none absolute bottom-full start-1/2 -translate-x-1/2 mb-2 w-max max-w-[220px] px-3 py-2 rounded-lg bg-[rgb(var(--foreground))] text-[rgb(var(--background))] text-[11px] leading-snug opacity-0 group-hover:opacity-100 transition-opacity z-10 text-center"
-                            >
-                              {skill.evidence}
-                            </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="text-sm font-medium text-foreground truncate">{name}</div>
+                          {evidence && (
+                            <div className="text-xs text-foreground-muted truncate">{evidence}</div>
                           )}
                         </div>
-                      );
-                    })}
-                  </div>
-                )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             );
           })}

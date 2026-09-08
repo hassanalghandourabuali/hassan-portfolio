@@ -17,12 +17,24 @@ export default function About() {
   }, []);
 
   const summary = {
-    en: `Electronic Business Management graduate with a clear focus on mobile application development using Flutter. I combine practical business experience in customer service, CRM, and digital marketing with the technical ability to plan and build real digital products.\n\nMy background gives me an understanding of problems from both the user and business perspective — which I apply when designing and developing mobile solutions. MUNJIZ is the clearest example: a product I conceived, planned, and am independently developing using Flutter to solve a real problem I observed firsthand.\n\nI am looking for opportunities in mobile development, product development, and digital roles where I can apply both my technical and business strengths.`,
-    ar: `خريج إدارة الأعمال الإلكترونية بتركيز واضح على تطوير تطبيقات الموبايل باستخدام Flutter. أجمع بين الخبرة العملية في الأعمال — خدمة العملاء وCRM والتسويق الرقمي — والقدرة التقنية على تخطيط وبناء منتجات رقمية حقيقية.\n\nخلفيتي تمنحني فهماً للمشكلات من منظور المستخدم والأعمال معاً — وهذا ما أطبّقه عند تصميم وتطوير الحلول الرقمية. مُنجز هو أوضح مثال على ذلك: منتج فكّرت فيه وخططت له وأطوّره بشكل مستقل باستخدام Flutter لحل مشكلة حقيقية لاحظتها بنفسي.\n\nأبحث عن فرص في تطوير الموبايل وتطوير المنتجات والأدوار الرقمية حيث أستطيع تطبيق نقاط قوتي التقنية والتجارية.`,
-    ru: `Выпускник по управлению электронным бизнесом с чётким фокусом на разработке мобильных приложений с использованием Flutter. Я сочетаю практический бизнес-опыт в обслуживании клиентов, CRM и цифровом маркетинге с техническими навыками планирования и создания реальных цифровых продуктов.\n\nМоя база даёт мне понимание проблем как с точки зрения пользователя, так и бизнеса — что я применяю при проектировании и разработке мобильных решений. MUNJIZ — самый наглядный пример: продукт, который я придумал, спланировал и самостоятельно разрабатываю с использованием Flutter.\n\nИщу возможности в мобильной разработке, разработке продуктов и цифровых ролях.`,
+    en: `Mobile app developer specialized in Flutter, with an academic background in Electronic Business Management.\n\nI combine the technical side — building Flutter apps from idea to execution — with hands-on experience managing social media pages, gained through freelance work. This combination gives me two angles on a product: the code, and how it actually reaches users and the market.\n\nMUNJIZ is the clearest example: an idea I researched, planned, and am independently developing with Flutter to solve a real problem I observed firsthand.`,
+    ar: `مطوّر تطبيقات موبايل متخصص بـ Flutter، بخلفية أكاديمية في إدارة الأعمال الإلكترونية.\n\nأجمع بين الجانب التقني — بناء تطبيقات Flutter من الفكرة للتنفيذ — وخبرة عملية بإدارة صفحات السوشيال ميديا، اكتسبتها من خلال أدوار حرة. هاد الجمع بيخليني أفهم المنتج من زاويتين: الكود، وكيف بوصل فعليًا للمستخدم والسوق.\n\nمُنجز هو أوضح مثال: فكرة درستها، خططتلها، وطورتها بشكل مستقل باستخدام Flutter لحل مشكلة حقيقية لاحظتها بنفسي.`,
+    ru: `Разработчик мобильных приложений, специализирующийся на Flutter, с академической базой в управлении электронным бизнесом.\n\nЯ сочетаю техническую сторону — создание приложений на Flutter от идеи до реализации — с практическим опытом управления страницами в социальных сетях, полученным на фриланс-проектах. Это сочетание даёт мне два ракурса на продукт: код и то, как он реально доходит до пользователей и рынка.\n\nMUNJIZ — самый наглядный пример: идея, которую я изучил, спланировал и самостоятельно разрабатываю на Flutter для решения реальной проблемы, замеченной мной лично.`,
   };
 
   const paragraphs = (summary[lang] || summary.en).split('\n\n');
+
+  const experienceLabel = lang === 'ar'
+    ? '٣ سنوات'
+    : lang === 'ru'
+    ? '3 года'
+    : '3 Years';
+
+  const availabilityLabel = lang === 'ar'
+    ? 'متاح للعمل'
+    : lang === 'ru'
+    ? 'Открыт к работе'
+    : 'Open to Work';
 
   return (
     <section id="about" className="bg-surface" aria-labelledby="about-heading">
@@ -32,7 +44,7 @@ export default function About() {
             <SectionHeader
               number="01"
               title={lang === 'ar' ? 'من أنا' : lang === 'ru' ? 'Обо мне' : 'About Me'}
-              subtitle={lang === 'ar' ? 'مطوّر بتفكير أعمال — أفهم المشكلة قبل أن أبني الحل' : lang === 'ru' ? 'Разработчик с бизнес-мышлением — понимаю проблему прежде чем строить решение' : 'A developer with business thinking — I understand the problem before building the solution'}
+              subtitle={lang === 'ar' ? 'مطوّر تطبيقات موبايل بتقنية Flutter — بخلفية إدارة أعمال إلكترونية وخبرة سوشيال ميديا' : lang === 'ru' ? 'Разработчик мобильных приложений на Flutter — с опытом в управлении электронным бизнесом и SMM' : 'A Flutter mobile app developer — with a background in e-business administration and social media experience'}
             />
             <div className="space-y-6">
               {paragraphs.map((p, i) => (
@@ -50,12 +62,16 @@ export default function About() {
               </h3>
               <div className="space-y-5">
                 <div>
-                  <div className="text-xs text-foreground-muted mb-1">{lang === 'ar' ? 'التخصص' : lang === 'ru' ? 'Специализация' : 'Focus'}</div>
-                  <div className="text-sm text-foreground font-medium">Flutter & Mobile Development</div>
+                  <div className="text-xs text-foreground-muted mb-1">
+                    {lang === 'ar' ? 'الخبرة' : lang === 'ru' ? 'Опыт' : 'Experience'}
+                  </div>
+                  <div className="text-sm text-foreground font-medium">{experienceLabel}</div>
                 </div>
                 <div>
-                  <div className="text-xs text-foreground-muted mb-1">{lang === 'ar' ? 'الخلفية' : lang === 'ru' ? 'База' : 'Background'}</div>
-                  <div className="text-sm text-foreground font-medium">{lang === 'ar' ? 'إدارة الأعمال الإلكترونية' : 'E-Business Administration'}</div>
+                  <div className="text-xs text-foreground-muted mb-1">
+                    {lang === 'ar' ? 'التوفر' : lang === 'ru' ? 'Доступность' : 'Availability'}
+                  </div>
+                  <div className="text-sm text-foreground font-medium">{availabilityLabel}</div>
                 </div>
                 <div>
                   <div className="text-xs text-foreground-muted mb-1">{lang === 'ar' ? 'الموقع' : lang === 'ru' ? 'Местоположение' : 'Location'}</div>
@@ -68,30 +84,18 @@ export default function About() {
               <h3 className="text-sm font-semibold text-foreground mb-5 uppercase tracking-wide">
                 {lang === 'ar' ? 'اللغات' : lang === 'ru' ? 'Языки' : 'Languages'}
               </h3>
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {langData.map((l) => (
-                  <div key={l.nameEn}>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-sm text-foreground font-medium">
-                        {lang === 'ar' ? l.nameAr : lang === 'ru' ? l.nameRu : l.nameEn}
-                      </span>
-                    </div>
-                    <div className="text-xs text-foreground-muted">
+                  <div key={l.nameEn} className="flex justify-between items-center">
+                    <span className="text-sm text-foreground font-medium">
+                      {lang === 'ar' ? l.nameAr : lang === 'ru' ? l.nameRu : l.nameEn}
+                    </span>
+                    <span className="text-xs text-foreground-muted">
                       {lang === 'ar' ? l.levelAr : lang === 'ru' ? l.levelRu : l.levelEn}
-                    </div>
+                    </span>
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="p-7 rounded-2xl border border-[rgb(var(--accent)/0.3)] bg-[rgb(var(--accent)/0.04)] flex items-center">
-              <blockquote className="text-sm text-foreground-muted leading-relaxed italic">
-                {lang === 'ar'
-                  ? '"لا أتعلم التقنيات فقط. أستخدمها لبناء حلول حقيقية."'
-                  : lang === 'ru'
-                  ? '"Я не просто учу технологии. Я использую их для создания реальных решений."'
-                  : '"I don\'t just learn technologies. I use them to build real solutions."'}
-              </blockquote>
             </div>
           </div>
         </div>

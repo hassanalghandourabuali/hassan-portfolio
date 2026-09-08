@@ -1,8 +1,20 @@
 import { useEffect, useRef } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Code2, Megaphone, Rocket, MessageCircle, Languages, Award } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n.jsx';
 import { education, certifications } from '@/lib/portfolioData';
 import SectionHeader from './SectionHeader';
+
+const CATEGORY_META = {
+  technical: { icon: Code2, color: '59 130 246' },
+  marketing: { icon: Megaphone, color: '13 148 136' },
+  digital: { icon: Rocket, color: '124 58 237' },
+  'soft-skills': { icon: MessageCircle, color: '180 83 9' },
+  language: { icon: Languages, color: '219 39 119' },
+};
+
+function metaFor(category) {
+  return CATEGORY_META[category] || { icon: Award, color: '107 114 128' };
+}
 
 export default function Education() {
   const { lang } = useLanguage();
@@ -111,7 +123,7 @@ export default function Education() {
                 : 'Certificates & Training'}
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {certifications.map((cert) => {
                 const name =
                   lang === 'ar'
@@ -137,28 +149,37 @@ export default function Education() {
                     }
                   : {};
 
+                const meta = metaFor(cert.category);
+                const CatIcon = meta.icon;
+                const cat = meta.color;
+
                 return (
                   <Wrapper
                     key={cert.id}
                     {...wrapperProps}
-                    className="group relative p-4 rounded-xl bg-surface-elevated border border-[rgb(var(--border))] hover:border-[rgb(var(--accent)/0.5)] transition-colors"
+                    style={{ '--cat': cat }}
+                    className="group flex items-center gap-2 p-2.5 rounded-xl bg-surface-elevated border border-[rgb(var(--border))] hover:border-[rgb(var(--cat)/0.5)] transition-colors"
                   >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="text-sm font-medium text-foreground mb-1">
-                        {name}
-                      </div>
+                    <div className="w-7 h-7 rounded-lg bg-[rgb(var(--cat)/0.12)] flex items-center justify-center flex-shrink-0">
+                      <CatIcon size={14} className="text-[rgb(var(--cat))]" aria-hidden="true" />
+                    </div>
 
+                    <div className="min-w-0 flex-1">
+                      <div className="text-sm font-medium text-foreground truncate">{name}</div>
+                      <div className="text-xs text-foreground-muted truncate">{issuer}</div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      {cert.date && (
+                        <span className="text-[11px] text-foreground-muted">{cert.date}</span>
+                      )}
                       {cert.url && (
                         <ExternalLink
-                          size={13}
-                          className="mt-0.5 text-foreground-muted group-hover:text-[rgb(var(--accent))] transition-colors flex-shrink-0"
+                          size={12}
+                          className="text-foreground-muted group-hover:text-[rgb(var(--cat))] transition-colors"
                           aria-hidden="true"
                         />
                       )}
-                    </div>
-
-                    <div className="text-xs text-foreground-muted">
-                      {issuer}
                     </div>
                   </Wrapper>
                 );
