@@ -19,7 +19,14 @@ export default function Hero() {
 
   const name = lang === 'ar' ? pInfo.nameAr : lang === 'ru' ? pInfo.nameRu : pInfo.nameEn;
   const title = lang === 'ar' ? pInfo.titleAr : lang === 'ru' ? pInfo.titleRu : pInfo.titleEn;
-  const tagline = lang === 'ar' ? pInfo.taglineAr : lang === 'ru' ? pInfo.taglineRu : pInfo.taglineEn;
+
+  // Final agreed tagline: Flutter identity first, no competing identities.
+  const taglines = {
+    ar: 'أحوّل الأفكار إلى تطبيقات موبايل عملية باستخدام Flutter، من التخطيط إلى التنفيذ.',
+    en: 'I turn ideas into practical mobile apps using Flutter, from planning to execution.',
+    ru: 'Я превращаю идеи в практичные мобильные приложения на Flutter, от планирования до реализации.',
+  };
+  const tagline = taglines[lang] || taglines.en;
 
   return (
     <section
@@ -69,13 +76,13 @@ export default function Hero() {
               {[
                 {
                   label: lang === 'ar' ? 'أبني' : lang === 'ru' ? 'Строю' : 'Build',
-                  sub: lang === 'ar' ? 'Flutter وتطوير الموبايل' : lang === 'ru' ? 'Flutter и мобильная разработка' : 'Flutter & Mobile',
+                  sub: lang === 'ar' ? 'Flutter وتطوير الموبايل' : lang === 'ru' ? 'Flutter и мобильная разработка' : 'Flutter & Mobile Development',
                   icon: '⚡',
                 },
                 {
-                  label: lang === 'ar' ? 'أسوّق' : lang === 'ru' ? 'Продвигаю' : 'Market',
-                  sub: lang === 'ar' ? 'السوشيال ميديا' : lang === 'ru' ? 'Социальные сети' : 'Social Media',
-                  icon: '📱',
+                  label: lang === 'ar' ? 'أصمم' : lang === 'ru' ? 'Проектирую' : 'Design',
+                  sub: lang === 'ar' ? 'واجهات UI/UX' : lang === 'ru' ? 'UI/UX интерфейсы' : 'UI/UX Interfaces',
+                  icon: '🎨',
                 },
               ].map((p) => (
                 <div

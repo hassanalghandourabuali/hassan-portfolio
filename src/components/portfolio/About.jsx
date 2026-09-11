@@ -16,10 +16,11 @@ export default function About() {
     return () => observer.disconnect();
   }, []);
 
+  // Final agreed About copy: Flutter identity -> supporting UI/UX & business background -> additional digital experience.
   const summary = {
-    en: `Mobile app developer specialized in Flutter, with an academic background in Electronic Business Management.\n\nI combine the technical side — building Flutter apps from idea to execution — with hands-on experience managing social media pages, gained through freelance work. This combination gives me two angles on a product: the code, and how it actually reaches users and the market.\n\nMUNJIZ is the clearest example: an idea I researched, planned, and am independently developing with Flutter to solve a real problem I observed firsthand.`,
-    ar: `مطوّر تطبيقات موبايل متخصص بـ Flutter، بخلفية أكاديمية في إدارة الأعمال الإلكترونية.\n\nأجمع بين الجانب التقني — بناء تطبيقات Flutter من الفكرة للتنفيذ — وخبرة عملية بإدارة صفحات السوشيال ميديا، اكتسبتها من خلال أدوار حرة. هاد الجمع بيخليني أفهم المنتج من زاويتين: الكود، وكيف بوصل فعليًا للمستخدم والسوق.\n\nمُنجز هو أوضح مثال: فكرة درستها، خططتلها، وطورتها بشكل مستقل باستخدام Flutter لحل مشكلة حقيقية لاحظتها بنفسي.`,
-    ru: `Разработчик мобильных приложений, специализирующийся на Flutter, с академической базой в управлении электронным бизнесом.\n\nЯ сочетаю техническую сторону — создание приложений на Flutter от идеи до реализации — с практическим опытом управления страницами в социальных сетях, полученным на фриланс-проектах. Это сочетание даёт мне два ракурса на продукт: код и то, как он реально доходит до пользователей и рынка.\n\nMUNJIZ — самый наглядный пример: идея, которую я изучил, спланировал и самостоятельно разрабатываю на Flutter для решения реальной проблемы, замеченной мной лично.`,
+    en: `A Flutter-focused mobile app developer, I build practical apps that start with understanding the idea and user needs, then turn them into a clear, workable digital experience.\n\nI hold an academic background in Electronic Business Management, alongside an interest in UI/UX design and understanding the relationship between user needs and product goals.\n\nI also have hands-on experience in content management, digital marketing, and working with digital platforms, experience that helps me understand the product and user from a wider perspective.`,
+    ar: `مطوّر تطبيقات موبايل متخصص في Flutter، أهتم ببناء تطبيقات عملية تبدأ من فهم الفكرة واحتياجات المستخدم، ثم تحويلها إلى تجربة رقمية واضحة وقابلة للتنفيذ.\n\nأمتلك خلفية أكاديمية في إدارة الأعمال الإلكترونية، إلى جانب اهتمام بتصميم UI/UX وفهم العلاقة بين احتياجات المستخدم وأهداف المنتج.\n\nكما أمتلك خبرة عملية في إدارة المحتوى والتسويق الرقمي والتعامل مع المنصات الرقمية، وهي خبرات أستفيد منها لفهم المنتج والمستخدم من منظور أوسع.`,
+    ru: `Разработчик мобильных приложений, специализирующийся на Flutter. Я создаю практичные приложения, начиная с понимания идеи и потребностей пользователя, а затем превращаю их в понятный и реализуемый цифровой продукт.\n\nУ меня академическая база в управлении электронным бизнесом, а также интерес к UI/UX-дизайну и пониманию связи между потребностями пользователей и целями продукта.\n\nТакже у меня есть практический опыт в управлении контентом, цифровом маркетинге и работе с цифровыми платформами, опыт, который помогает мне понимать продукт и пользователя шире.`,
   };
 
   const paragraphs = (summary[lang] || summary.en).split('\n\n');
@@ -36,6 +37,13 @@ export default function About() {
     ? 'Открыт к работе'
     : 'Open to Work';
 
+  // Updated subtitle: leads with Flutter + supporting identity, no longer equal-weights social media.
+  const subtitle = {
+    ar: 'مطوّر تطبيقات موبايل بتقنية Flutter — بخلفية في إدارة الأعمال الإلكترونية وتصميم UI/UX',
+    en: 'A Flutter mobile app developer, with a background in e-business management and UI/UX design',
+    ru: 'Разработчик мобильных приложений на Flutter, с опытом в управлении электронным бизнесом и UI/UX-дизайне',
+  };
+
   return (
     <section id="about" className="bg-surface" aria-labelledby="about-heading">
       <div className="section-pad">
@@ -44,7 +52,7 @@ export default function About() {
             <SectionHeader
               number="01"
               title={lang === 'ar' ? 'من أنا' : lang === 'ru' ? 'Обо мне' : 'About Me'}
-              subtitle={lang === 'ar' ? 'مطوّر تطبيقات موبايل بتقنية Flutter — بخلفية إدارة أعمال إلكترونية وخبرة سوشيال ميديا' : lang === 'ru' ? 'Разработчик мобильных приложений на Flutter — с опытом в управлении электронным бизнесом и SMM' : 'A Flutter mobile app developer — with a background in e-business administration and social media experience'}
+              subtitle={subtitle[lang] || subtitle.en}
             />
             <div className="space-y-6">
               {paragraphs.map((p, i) => (
